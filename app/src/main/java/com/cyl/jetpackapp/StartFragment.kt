@@ -1,12 +1,13 @@
-package com.cyl.jetpackapp.ui.start
+package com.cyl.jetpackapp
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.cyl.jetpackapp.R
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import kotlinx.android.synthetic.main.start_fragment.*
 
 class StartFragment : Fragment() {
 
@@ -25,8 +26,16 @@ class StartFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        //实例化ViewModel
         viewModel = ViewModelProviders.of(this).get(StartViewModel::class.java)
+
+        // Create the observer which updates the UI.
+        val nameObserver = Observer<String> { newName ->
+            // Update the UI, in this case, a TextView.
+            message.text = newName
+        }
         // TODO: Use the ViewModel
+        viewModel.data.observe(this,nameObserver)
     }
 
 }

@@ -6,7 +6,7 @@
         android:id="@+id/start"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.start.StartFragment">
+        tools:context=".StartFragment">
 
     <TextView
             android:id="@+id/message"
